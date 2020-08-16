@@ -118,8 +118,8 @@ export default {
     async getPubStateFromApi () {
       const response = await ClientService.fetchPubState()
       this.pubState = response.data
-      this.history.push(`В баре играет ${this.pubState.playingMusic}. Посетителей танцует: ${this.pubState.dancingClientCount}. Посетителей за столиками: ${this.pubState.drinkingClientCount}. `)
-      // this.history.push(`${this.pubState.playingMusic}-${this.pubState.dancingClientCount}-${this.pubState.drinkingClientCount}`)
+      // this.history.push(`В баре играет ${this.pubState.playingMusic}. Посетителей танцует: ${this.pubState.dancingClientCount}. Посетителей за столиками: ${this.pubState.drinkingClientCount}. `)
+      this.history.push(`[${this.pubState.playingMusic} - ${this.pubState.dancingClientCount} - ${this.pubState.drinkingClientCount}]`)
     },
     async changeSelectMusic (music) {
       await ClientService.orderPubMusic(music)

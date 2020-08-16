@@ -12,6 +12,13 @@ modules:
     config:
         Yii2:
             configFile: 'config/test.php'
+        Db:
+            dsn: 'mysql:host=mysql;dbname=enaza_tests'
+            user: 'root'
+            password: 'hexrf88'
+            dump: tests/_data/dump.sql
+            cleanup: true # reload dump between tests
+            populate: true # load dump before all tests
 
 # To enable code coverage:
 #coverage:

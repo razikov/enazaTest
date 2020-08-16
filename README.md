@@ -35,7 +35,9 @@ cd ./enazaTest
 
 cp .env.example .env и настроить
 
-docker-compose -f docker-compose.yml pull
+docker-compose pull
+
+docker-compose up --detach --build
 
 docker-compose run --rm node npm install
 
@@ -51,13 +53,13 @@ docker-compose run --rm php ./yii data/init
 ## Запустить
 
 ```
-docker-compose -f docker-compose.yml up --detach
+docker-compose up --detach
 ```
 
 ## Остановить
 
 ```
-docker-compose -f docker-compose.yml down --remove-orphans
+docker-compose down --remove-orphans
 ```
 
 ## Тестирование
@@ -66,6 +68,10 @@ docker-compose -f docker-compose.yml down --remove-orphans
 docker-compose run --rm node npm run test:unit
 
 docker-compose run --rm node npm run test:e2e
+
+// Перед запуском тестов надо развернуть базу. В команду ниже подставить своего пользователя и пароль
+
+docker exec -it enaza-mysql mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} -e "CREATE DATABASE enaza_tests CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
 docker-compose run --rm php composer test
 ```

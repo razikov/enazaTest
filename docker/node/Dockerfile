@@ -1,3 +1,3 @@
-FROM node:14-alpine
+FROM node:lts-alpine
 RUN yarn global add @vue/cli
 RUN yarn global add @vue/cli-service-global

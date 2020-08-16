@@ -36,3 +36,4 @@ services:
       - ./docker/mysql/data:/var/lib/mysql
     env_file:
       - .env
+    container_name: enaza-mysql

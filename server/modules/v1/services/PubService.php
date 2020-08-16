@@ -4,9 +4,8 @@ namespace app\modules\v1\services;
 
 use app\modules\v1\models\Client;
 use app\modules\v1\models\Pub;
+use Exception;
 use Throwable;
-use yii\web\NotFoundHttpException;
-use yii\web\ServerErrorHttpException;
 
 class PubService
 {
@@ -15,7 +14,7 @@ class PubService
         $model = Pub::findOne($pub_id);
 
         if (!$model) {
-            throw new NotFoundHttpException();
+            throw new Exception();
         }
 
         return [
@@ -30,7 +29,7 @@ class PubService
         $model = Pub::findOne($pub_id);
 
         if (!$model) {
-            throw new NotFoundHttpException();
+            throw new Exception();
         }
 
         $model->load(['playing_music' => $music_id], '');
@@ -39,7 +38,7 @@ class PubService
 
         try {
             if ($model->save() === false && !$model->hasErrors()) {
-                throw new ServerErrorHttpException('Failed to update the object for unknown reason.');
+                throw new Exception('Failed to update the object for unknown reason.');
             }
 
             $clientsTable = Client::tableName();
@@ -56,7 +55,7 @@ class PubService
             $transaction->commit();
         } catch (Throwable $e) {
             $transaction->rollback();
-            throw new ServerErrorHttpException($e);
+            throw new Exception($e);
         }
 
         return $model;
