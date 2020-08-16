@@ -26,38 +26,54 @@
 Если не успеваете выполнить дополнительные задачи, можете их описать отдельно, как бы вы их реализовывали, какие пункты важные, какие не стоит выполнять и почему.
 ```
 
-# Установка и запуск через докер
+# Установка
 
 ```
-TODO: Сборку контейнера перед стартом для клиента + установка зависимостей перед стартом для сервера
+git clone git@github.com:razikov/enazaTest.git
 
-NOTE: должны быть установлены: git, composer, npm, docker, docker-compose
-
-git clone .../enazaTest
-
-cd ./enazaTest/server
-
-composer install
-
-cd ../client
-
-npm install
-
-npm run build
-
-cd ../
+cd ./enazaTest
 
 cp .env.example .env и настроить
 
 docker-compose -f docker-compose.yml pull
 
-docker-compose -f docker-compose.yml down --remove-orphans
+docker-compose run --rm node npm install
 
-docker exec -it enazatest_php_1 php yii migrate --interactive=0
+docker-compose run --rm node npm run build
 
-docker exec -it enazatest_php_1 php yii data/init
+docker-compose run --rm php composer install
 
+docker-compose run --rm php ./yii migrate --interactive=0
+
+docker-compose run --rm php ./yii data/init
+```
+
+## Запустить
+
+```
 docker-compose -f docker-compose.yml up --detach
+```
+
+## Остановить
+
+```
+docker-compose -f docker-compose.yml down --remove-orphans
+```
+
+## Тестирование
+
+```
+docker-compose run --rm node npm run test:unit
+
+docker-compose run --rm node npm run test:e2e
+
+docker-compose run --rm php composer test
+```
+
+## Линтинг
+
+```
+docker-compose run --rm node npm run lint
 ```
 
 # Использование
@@ -69,7 +85,3 @@ docker-compose -f docker-compose.yml up --detach
 api-key для авторизации в api "Bearer 100-token"
 
 Проверять работоспособность клиента тут http://enaza-client.local
-
-Дополнительная документация для [клиента](client)
-
-Дополнительная документация для [сервера](server)

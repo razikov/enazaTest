@@ -3,7 +3,7 @@
 /**
  * @SWG\Swagger(
  *     schemes={"http"},
- *     host="localhost:8081",
+ *     host="enaza-server.local",
  *     basePath="/api/v1",
  *     @SWG\Info(
  *         version="1.0.0",

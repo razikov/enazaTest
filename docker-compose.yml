@@ -22,6 +22,11 @@ services:
     working_dir: /var/www/server
     env_file:
       - .env
+  node:
+    build: ./docker/node
+    working_dir: /var/www/client
+    volumes:
+      - ./client:/var/www/client
   mysql:
     image: mysql:8
     ports:
