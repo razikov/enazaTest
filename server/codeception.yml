@@ -14,7 +14,7 @@ modules:
             configFile: 'config/test.php'
         Db:
             dsn: 'mysql:host=mysql;dbname=enaza_tests'
-            user: 'user'
+            user: 'root'
             password: 'password'
             dump: tests/_data/dump.sql
             cleanup: true # reload dump between tests
