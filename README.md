@@ -24,6 +24,8 @@
 7. Фронтенд из двух страниц. Бар и Танцпол. Добавить в зафиксированном окне (в любой части экрана) журнал: при смене жанра музыки делать запись в журнал в формате [жанр - сколько людей танцевало - сколько людей было в баре]. Журнал копится до обновления страницы, т.е. только на фронтенде. Но при переходе между баром и танцполом его состояние должно сохраняться.
 
 Если не успеваете выполнить дополнительные задачи, можете их описать отдельно, как бы вы их реализовывали, какие пункты важные, какие не стоит выполнять и почему.
+3. не реализовано, не вижу необходимости. В текущей версии нечего распаралеливать.
+7. надо доработать через vuex
 ```
 
 # Установка
@@ -67,9 +69,7 @@ docker-compose run --rm node npm run test:unit
 
 docker-compose run --rm node npm run test:e2e
 
-// Перед запуском тестов надо развернуть базу. В команду ниже подставить своего пользователя и пароль
-
-docker exec -it enaza-mysql mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} -e "CREATE DATABASE enaza_tests CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+docker exec -it enaza-mysql mysql -uuser -ppassword -e "CREATE DATABASE enaza_tests CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
 docker-compose run --rm php composer test
 ```
