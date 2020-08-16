@@ -1,7 +1,5 @@
 <?php
 
-use app\modules\v1\controllers\PubController;
-
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 

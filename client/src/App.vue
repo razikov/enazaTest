@@ -7,8 +7,6 @@
     >
       <v-toolbar-title><router-link :to="`/playing/${pub.playing_music}/`">Бар</router-link></v-toolbar-title>
       <v-toolbar-title><router-link :to="`/playing/${pub.playing_music}/danceFloor`">Танцпол</router-link></v-toolbar-title>
-      <!-- <v-toolbar-title><router-link to="/">Бар</router-link></v-toolbar-title>
-      <v-toolbar-title><router-link to="/danceFloor">Танцпол</router-link></v-toolbar-title> -->
       <v-spacer></v-spacer>
       <span style="width:300px;">
         <v-select
@@ -118,14 +116,12 @@ export default {
     async getPubStateFromApi () {
       const response = await ClientService.fetchPubState()
       this.pubState = response.data
-      // this.history.push(`В баре играет ${this.pubState.playingMusic}. Посетителей танцует: ${this.pubState.dancingClientCount}. Посетителей за столиками: ${this.pubState.drinkingClientCount}. `)
       this.history.push(`[${this.pubState.playingMusic} - ${this.pubState.dancingClientCount} - ${this.pubState.drinkingClientCount}]`)
     },
     async changeSelectMusic (music) {
       await ClientService.orderPubMusic(music)
       await this.getPubFromApi()
       await this.getPubStateFromApi()
-      // HACK: для обновление грида!
       // TODO: пофиксить через стор
       this.$router.replace({ name: this.$route.name, params: { music: this.pub.playing_music } })
     },
@@ -135,7 +131,6 @@ export default {
       await ClientService.orderPubMusic(music)
       await this.getPubFromApi()
       await this.getPubStateFromApi()
-      // HACK: для обновление грида!
       // TODO: пофиксить через стор
       if (this.pub.playing_music !== oldPlayingMusic) {
         this.$router.replace({ name: this.$route.name, params: { music: this.pub.playing_music } })

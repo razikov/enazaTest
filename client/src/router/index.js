@@ -6,16 +6,6 @@ import DanceFloor from '../views/DanceFloor.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Бар',
-  //   component: Pub
-  // },
-  // {
-  //   path: '/danceFloor',
-  //   name: 'Танцпол',
-  //   component: DanceFloor
-  // },
   {
     path: '/playing/:music/',
     name: 'pub',

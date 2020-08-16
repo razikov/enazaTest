@@ -28,5 +28,3 @@ phpunit.phar
 
 #vagrant folder
 /.vagrant
-
-.env

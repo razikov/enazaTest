@@ -33,8 +33,6 @@ git clone git@github.com:razikov/enazaTest.git
 
 cd ./enazaTest
 
-cp .env.example .env и настроить
-
 docker-compose pull
 
 docker-compose up --detach --build

@@ -23,7 +23,6 @@ class User extends BaseObject implements IdentityInterface
         ],
     ];
 
-
     /**
      * {@inheritdoc}
      */
